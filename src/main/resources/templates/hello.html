@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Save Dish</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css" integrity="sha384-GJzZqFGwb1QTTN6wy59ffF1BuGJpLSa9DkKMp0DgiMDm4iYMj70gZWKYbI706tWS" crossorigin="anonymous">
+</head>
+<body>
+<br>
+<br>
+<br>
+<br>
+
+<div class="d-grid gap-2 col-6 mx-auto">
+    <button class="btn btn-primary" type="button" onclick= th:href="@{/restaurants/list}">Restaurants</button>
+    <button class="btn btn-primary" type="button" onclick= th:href="@{/dishes/list}">Dishes</button>
+    <button class="btn btn-primary" type="button" onclick= th:href="@{/menus/list}">Menus</button>
+</div>
+<br>
+
+<div class="d-grid gap-2 col-6 mx-auto">
+<a th:href="@{/restaurants/list}"> - Go to Restaurants List - </a>
+    <br>
+<a th:href="@{/dishes/list}"> - Go to Dishes List - </a>
+    <br>
+    <a th:href="@{/menus/list}"> - Go to Menus List - </a>
+</div>
+
+</body>
+</html>

@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-iYQeCzEYFbKjA/T2uDLTpkwGzCiq6soy8tYaI1GyVh/UjpbCx/TYkiZhlZB6+fzT" crossorigin="anonymous">
+  <title>List of Menus</title>
+</head>
+<body>
+
+<div class="container">
+
+  <h3>List of menus</h3>
+  <hr>
+
+  <a th:href="@{/menus/showFormForAdd}"
+     class="btn btn-primary btn-sm mb-3">
+    Add Menu
+  </a>
+
+  <table class="table table-striped table-hover">
+    <thead class="thead-dark">
+    <tr>
+      <th scope="col">Name</th>
+      <th scope="col">Restaurant_id</th>
+      <th scope="col">Options</th>
+    </tr>
+    </thead>
+    <tbody>
+
+    <tr th:each="tempMenu : ${menus}">
+
+      <td th:text="${tempMenu.name}" />
+      <td th:text="${tempMenu.restaurantId}" />
+
+      <td>
+        <a th:href="@{/menus/showFormForUpdate(menuId=${tempMenu.id})}"
+           class="btn btn-info btn-sm">
+          Update
+        </a>
+
+        <a th:href="@{/menus/delete(menuId=${tempMenu.id})}"
+           class="btn btn-danger btn-sm"
+           onclick="if (!(confirm('Are you sure you want to delete this menu?'))) return false">
+          Delete
+        </a>
+
+      </td>
+    </tr>
+
+    </tbody>
+  </table>
+  <br>
+  <a th:href="@{/hello}"> - Back to home page - </a>
+
+</div>
+</body>
+</html>

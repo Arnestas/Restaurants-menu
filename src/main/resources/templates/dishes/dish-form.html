@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+  <meta charset="UTF-8">
+  <title>Save Dish</title>
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css" integrity="sha384-GJzZqFGwb1QTTN6wy59ffF1BuGJpLSa9DkKMp0DgiMDm4iYMj70gZWKYbI706tWS" crossorigin="anonymous">
+</head>
+<body>
+<div class="container">
+  <h3>Dish directory</h3>
+  <hr>
+
+  <p class="h4 mb-4">Save dish</p>
+
+  <form action="#"  th:action="@{/dishes/save}"
+        th:object="${dish}" method="POST">
+
+    <input type="hidden" th:field="*{id}"/>
+
+    <input type="text" th:field="*{name}"
+           class="form-control mb-4 col-4" placeholder="Dishes name">
+
+    <input type="text" th:field="*{description}"
+           class="form-control mb-4 col-4" placeholder="Description">
+
+    <button type="submit" class="btn btn-info col-2">Save</button>
+
+  </form>
+
+  <hr>
+  <a th:href="@{/dishes/list}"> - Back to Dishes List - </a>
+
+</div>
+
+
+</body>
+</html>

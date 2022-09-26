@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-iYQeCzEYFbKjA/T2uDLTpkwGzCiq6soy8tYaI1GyVh/UjpbCx/TYkiZhlZB6+fzT" crossorigin="anonymous">
+    <title>List of dishes</title>
+</head>
+<body>
+
+<div class="container">
+
+    <h3>List of dishes!</h3>
+    <hr>
+
+    <a th:href="@{/dishes/showFormForAdd}"
+       class="btn btn-primary btn-sm mb-3">
+        Add Dish
+    </a>
+
+    <table class="table table-striped table-hover">
+        <thead class="thead-dark">
+        <tr>
+            <th scope="col">Name</th>
+            <th scope="col">Description</th>
+            <th scope="col">Action</th>
+        </tr>
+        </thead>
+        <tbody>
+
+        <tr th:each="tempDish : ${dishes}">
+
+            <td th:text="${tempDish.name}" />
+            <td th:text="${tempDish.description}"/>
+            <td>
+                <a th:href="@{/dishes/showFormForUpdate(dishId=${tempDish.id})}"
+                   class="btn btn-info btn-sm">
+                    Update
+                </a>
+
+                <a th:href="@{/dishes/delete(dishId=${tempDish.id})}"
+                   class="btn btn-danger btn-sm"
+                   onclick="if (!(confirm('Are you sure you want to delete this dish?'))) return false">
+                    Delete
+                </a>
+
+            </td>
+        </tr>
+
+        </tbody>
+    </table>
+    <br>
+    <a th:href="@{/hello}"> - Back home page - </a>
+
+</div>
+</body>
+</html>
