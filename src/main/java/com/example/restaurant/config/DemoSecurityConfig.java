@@ -7,6 +7,7 @@ import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
 import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter;
 import org.springframework.security.core.userdetails.User;
+import org.springframework.security.web.util.matcher.AntPathRequestMatcher;
 
 import javax.sql.DataSource;
 
@@ -22,7 +23,7 @@ public class DemoSecurityConfig extends WebSecurityConfigurerAdapter {
 	@Override
 	protected void configure(AuthenticationManagerBuilder auth) throws Exception {
 
-		// use db autentication
+		// use db authentication
 		auth.jdbcAuthentication().dataSource(securityDataSource);
 
 
@@ -42,8 +43,9 @@ public class DemoSecurityConfig extends WebSecurityConfigurerAdapter {
 			.csrf().disable()
 			.authorizeRequests()
 			.antMatchers("/").hasRole("EMPLOYEE")
-			.antMatchers("/restaurants/**").hasRole("MANAGER")
-			.antMatchers("/dishes/**").hasRole("MANAGER")
+			.antMatchers("/restaurants/**").hasRole("ADMIN")
+			.antMatchers("/restaurants_employee/**").hasRole("EMPLOYEE")
+			.antMatchers("/dishes/**").hasRole("ADMIN")
 			.antMatchers("/menus/**").hasRole("ADMIN")
 			.and()
 			.formLogin()
@@ -51,7 +53,13 @@ public class DemoSecurityConfig extends WebSecurityConfigurerAdapter {
 				.defaultSuccessUrl("/home", true)
 				.permitAll()
 			.and()
-			.logout().permitAll()
+			.logout()
+				.logoutUrl("/logout")
+				.logoutRequestMatcher(new AntPathRequestMatcher("/logout","GET"))
+				.clearAuthentication(true)
+				.invalidateHttpSession(true)
+				.deleteCookies("JSESSIONID")
+				.logoutSuccessUrl("/login")
 			.and()
 			.exceptionHandling().accessDeniedPage("/access-denied");
 
@@ -80,9 +88,3 @@ public class DemoSecurityConfig extends WebSecurityConfigurerAdapter {
 	}
 		
 }
-
-
-
-
-
-

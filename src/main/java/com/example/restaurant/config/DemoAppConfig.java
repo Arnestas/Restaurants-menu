@@ -19,8 +19,8 @@ public class DemoAppConfig {
 
 		InternalResourceViewResolver viewResolver = new InternalResourceViewResolver();
 
-		viewResolver.setPrefix("/templates1");
-		viewResolver.setSuffix(".html");
+		viewResolver.setPrefix("/resources/templates/");
+		viewResolver.setSuffix(".jsp");
 
 		return viewResolver;
 	}

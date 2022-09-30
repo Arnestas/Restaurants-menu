@@ -6,16 +6,21 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 @Controller
-//@RequestMapping("/")
+@RequestMapping("/")
 public class DemoController {
 
-    @GetMapping("login")
+    @GetMapping("/login")
     public String getLoginView(){
         return "login";
     }
 
+    @GetMapping("/")
+    public String getLoginFromBlanc(){
+        return "login";
+    }
 
-    @GetMapping("home")
+
+    @GetMapping("/home")
     public String getCourses(){
         return "home";
     }
