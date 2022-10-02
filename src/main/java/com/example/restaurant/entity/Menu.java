@@ -17,17 +17,13 @@ public class Menu {
     @Column(name = "restaurant_id")
     private int restaurantId;
 
-    @Column(name = "dish_id")
-    private int dishId;
-
     public Menu() {
     }
 
-    public Menu(int id, String name, int restaurantId, int dishId) {
+    public Menu(int id, String name, int restaurantId) {
         this.id = id;
         this.name = name;
         this.restaurantId = restaurantId;
-        this.dishId = dishId;
     }
 
     public int getId() {
@@ -54,11 +50,4 @@ public class Menu {
         this.restaurantId = restaurantId;
     }
 
-    public int getDishId() {
-        return dishId;
-    }
-
-    public void setDishId(int dishId) {
-        this.dishId = dishId;
-    }
 }

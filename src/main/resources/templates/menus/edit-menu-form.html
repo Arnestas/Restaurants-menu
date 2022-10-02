@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+  <meta charset="UTF-8">
+  <title>Save Menu</title>
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css" integrity="sha384-GJzZqFGwb1QTTN6wy59ffF1BuGJpLSa9DkKMp0DgiMDm4iYMj70gZWKYbI706tWS" crossorigin="anonymous">
+</head>
+<body>
+<div class="container">
+  <h3>Menu directory</h3>
+  <hr>
+
+  <p class="h4 mb-4">Save Menu</p>
+
+  <form action="#"  th:action="@{/menus/saveDishInMenu}"
+        th:object="${dishInMenu}" method="POST">
+
+    <div th:each="tempMenu : ${menu}">
+      <input type="radio" th:field="*{menuId}"  th:value="${tempMenu.id}">
+      <label th:for="${#ids.prev('menuId')}" th:text="${tempMenu.id}"> model</label>
+      <label th:for="${#ids.prev('menuId')}" th:text="${tempMenu.name}"> model</label>
+    </div>
+
+<br>
+    <div class="form-group">
+      <label>Add dish to menu</label>
+      <div th:each="tempDish : ${dishes}">
+        <div class="custom-control custom-radio custom-control-inline">
+          <b>
+          <input type="radio" th:field="*{dishId}" th:value="${tempDish.id}" class="custom-control-input">
+          <label class="custom-control-label" th:for="${#ids.prev('dishId')}" th:text="${tempDish.name}">model</label>.
+          </b>
+          &nbsp;
+          <label th:for="${#ids.prev('dishId')}" th:text="${tempDish.description}">model</label>
+        </div>
+      </div>
+    </div>
+
+    <button type="submit" class="btn btn-info col-2">Save</button>
+  </form>
+</div>
+  <br>
+  <hr>
+
+  <hr>
+  <a th:href="@{/menus/list}"> - Back to Menus List - </a>
+
+</body>
+</html>

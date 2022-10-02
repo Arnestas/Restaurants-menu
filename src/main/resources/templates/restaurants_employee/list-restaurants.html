@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-iYQeCzEYFbKjA/T2uDLTpkwGzCiq6soy8tYaI1GyVh/UjpbCx/TYkiZhlZB6+fzT" crossorigin="anonymous">
+    <title>List of restaurants</title>
+</head>
+<body>
+
+<div class="container">
+
+<h3>Welcome to our restaurants!</h3>
+<hr>
+
+
+<table class="table table-striped table-hover">
+    <thead class="thead-dark">
+    <tr>
+        <th scope="col">Name</th>
+        <th scope="col">Code</th>
+        <th scope="col">Address</th>
+        <th scope="col">Action</th>
+    </tr>
+    </thead>
+    <tbody>
+
+    <tr th:each="tempRestaurant : ${restaurants}">
+
+        <td th:text="${tempRestaurant.name}" />
+        <td th:text="${tempRestaurant.code}"/>
+        <td th:text="${tempRestaurant.address}"/>
+        <td>
+            <a th:href="@{/restaurants_employee/showMenu(restaurantId=${tempRestaurant.id})}"
+               class="btn btn-info btn-sm">
+                Show menu
+            </a>
+        </td>
+    </tr>
+
+    </tbody>
+</table>
+    <br>
+    <a th:href="@{/home}"> - Back to home page - </a>
+
+</div>
+</body>
+</html>

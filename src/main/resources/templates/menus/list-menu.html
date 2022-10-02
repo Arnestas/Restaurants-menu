@@ -40,6 +40,11 @@
           Update
         </a>
 
+        <a th:href="@{/menus/showFormToAddDish(menuId=${tempMenu.id})}"
+           class="btn btn-info btn-sm">
+          Add Dish
+        </a>
+
         <a th:href="@{/menus/delete(menuId=${tempMenu.id})}"
            class="btn btn-danger btn-sm"
            onclick="if (!(confirm('Are you sure you want to delete this menu?'))) return false">

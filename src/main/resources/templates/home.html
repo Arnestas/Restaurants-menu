@@ -17,12 +17,13 @@
 
 <div class="d-grid gap-2 col-5 mx-auto" sec:authorize="${hasRole('ROLE_ADMIN')}">
     <a th:href="@{/restaurants/list}" type="submit" class="btn btn-primary">Restaurants</a>
-    <a th:href="@{/dishes/list}" type="submit" class="btn btn-primary">Menus</a>
-    <a th:href="@{@{/menus/list}}" type="submit" class="btn btn-primary">Dishes</a>
+    <a th:href="@{@{/menus/list}}" type="submit" class="btn btn-primary">Menus</a>
+    <a th:href="@{/dishes/list}" type="submit" class="btn btn-primary">Dishes</a>
+
 </div>
 <br>
 <div class="d-grid gap-2 col-4 mx-auto" sec:authorize="${hasRole('ROLE_EMPLOYEE')}">
-    <a th:href="@{/restaurants-employee/list}" type="submit" class="btn btn-primary">Restaurants</a>
+    <a th:href="@{/restaurants_employee/list}" type="submit" class="btn btn-primary">Restaurants</a>
 </div>
 
 <form method="get" action="/logout">
