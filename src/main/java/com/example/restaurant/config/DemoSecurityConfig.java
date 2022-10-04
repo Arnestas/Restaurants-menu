@@ -27,13 +27,13 @@ public class DemoSecurityConfig extends WebSecurityConfigurerAdapter {
 		auth.jdbcAuthentication().dataSource(securityDataSource);
 
 
-//		// add our users for in memory authentication
-//		User.UserBuilder users = User.withDefaultPasswordEncoder();
-//
-//		auth.inMemoryAuthentication()
-//			.withUser(users.username("john").password("test123").roles("EMPLOYEE"))
-//			.withUser(users.username("mary").password("test123").roles("EMPLOYEE", "MANAGER"))
-//			.withUser(users.username("susan").password("test123").roles("EMPLOYEE", "MANAGER", "ADMIN"));
+		// add our users for in memory authentication
+		User.UserBuilder users = User.withDefaultPasswordEncoder();
+
+		auth.inMemoryAuthentication()
+			.withUser(users.username("john").password("123").roles("EMPLOYEE"))
+			.withUser(users.username("mary").password("123").roles("EMPLOYEE", "MANAGER"))
+			.withUser(users.username("susan").password("123").roles("EMPLOYEE", "MANAGER", "ADMIN"));
 	}
 
 	@Override
