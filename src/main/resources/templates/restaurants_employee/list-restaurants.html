@@ -31,8 +31,9 @@
         <td th:text="${tempRestaurant.name}" />
         <td th:text="${tempRestaurant.code}"/>
         <td th:text="${tempRestaurant.address}"/>
+
         <td>
-            <a th:href="@{/restaurants_employee/showMenu(restaurantId=${tempRestaurant.id})}"
+            <a th:href="@{/restaurants_employee/show-menu(restaurantId=${tempRestaurant.id})}"
                class="btn btn-info btn-sm">
                 Show menu
             </a>

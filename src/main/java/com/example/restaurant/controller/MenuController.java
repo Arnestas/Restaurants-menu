@@ -46,7 +46,6 @@ public class MenuController {
         return "menus/list-menu";
     }
 
-
     @GetMapping("/showFormForAdd")
     private String showFormForAdd(Model model){
 
